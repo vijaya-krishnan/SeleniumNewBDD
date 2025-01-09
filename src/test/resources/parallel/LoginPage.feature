@@ -3,7 +3,7 @@ Feature: Login page feature
 Scenario: Login page title
 Given user is on login page
 When user gets the title of the page
-Then page title should be "Login - My Store"
+Then page title should be "Homnifi"
 
 Scenario: Forgot Password link
 Given user is on login page
