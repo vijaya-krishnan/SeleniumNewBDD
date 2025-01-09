@@ -18,7 +18,7 @@ public class LoginPageSteps {
 	public void user_is_on_login_page() {
 
 		DriverFactory.getDriver()
-				.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
+				.get("https://app.homnifi.com");
 	}
 
 	@When("user gets the title of the page")

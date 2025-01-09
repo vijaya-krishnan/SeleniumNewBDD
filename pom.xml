@@ -16,7 +16,7 @@
 	<properties>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
+		<java.version>22</java.version>
 		<junit.version>4.13.1</junit.version>
 		<cucumber.version>6.9.0</cucumber.version>
 		<maven.compiler.version>3.8.1</maven.compiler.version>
@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
-			<version>4.2.2</version>
+			<version>5.9.2</version>
 		</dependency>
 
 		<dependency>
@@ -86,6 +86,13 @@
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>4.1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version> <!-- Use the latest version -->
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
@@ -127,14 +134,26 @@
 				</configuration>
 			</plugin>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+					<compilerArgs>
+						<arg>--add-opens</arg>
+						<arg>jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+
 			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-failsafe-plugin</artifactId> 
 				<version>3.0.0-M3</version> <executions> <execution> <goals> <goal>integration-test</goal> 
 				</goals> <configuration> UNCOMMENT - To add any exclusions if required <excludes> 
 				<exclude>**/*IT*.java</exclude> </excludes> <includes> UNCOMMENT BELOW LINE 
 				- To execute feature files with a single runner <include>**/MyTestRunner.java</include> 
 				UNCOMMENT BELOW LINE - To execute feature files with multiple runners <include>**/*Runner.java</include> 
-				</includes> UNCOMMENT BELOW 3 LINES - To execute using parallel or combination 
-				option <parallel>methods</parallel> <threadCount>4</threadCount> <perCoreThreadCount>true</perCoreThreadCount> 
+				</includes> UNCOMMENT BELOW 3 LINES - To execute using parallel or combination
+				option <parallel>methods</parallel> <threadCount>4</threadCount> <perCoreThreadCount>true</perCoreThreadCount>
 				UNCOMMENT BELOW 3 LINES - To execute using forking or combination option 
 				<forkCount>2</forkCount> <reuseForks>true</reuseForks> <reportsDirectory>${project.build.directory}/failsafe-reports_${surefire.forkNumber}</reportsDirectory> 
 				</configuration> </execution> </executions> </plugin> -->
